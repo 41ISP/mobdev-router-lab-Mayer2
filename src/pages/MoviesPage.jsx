@@ -6,12 +6,15 @@ import {useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function MoviesPage() {
   const selectedGenre = '';
-  const visibleMovies = movies;
+
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  const activeCategory = searchParams.get('movies') || '';
+  const activeCategory = searchParams.get('genre') || '';
 
 
+  const visibleMovies = activeCategory
+   ? movies.filter(p => p.genre === activeCategory)
+     : movies;
 
 
   return (

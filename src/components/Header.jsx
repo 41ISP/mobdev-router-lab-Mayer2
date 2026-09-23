@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const [query, setQuery] = useState('');
+  const navigate = useNavigate()
 
   function handleSubmit(event) {
     event.preventDefault();
+    navigate(`/search?q=`+query)
   }
 
   return (
