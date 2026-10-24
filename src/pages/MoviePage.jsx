@@ -1,6 +1,10 @@
+import {useNavigate } from 'react-router-dom';
 import { getMovieById } from '../data/movies.js';
 
 export default function MoviePage() {
+
+
+  const navigate = useNavigate()
   const id = 'inception';
   const movie = getMovieById(id);
 
@@ -34,7 +38,7 @@ export default function MoviePage() {
             <strong>{movie.director}</strong>
           </div>
 
-          <button className="secondary-btn" type="button">
+          <button onClick={() => navigate(-1)} className="secondary-btn" type="button">
             ← Назад
           </button>
         </div>

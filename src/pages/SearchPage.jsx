@@ -1,8 +1,13 @@
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import MovieCard from '../components/MovieCard.jsx';
 import { movies } from '../data/movies.js';
 
 export default function SearchPage() {
-  const query = '';
+   const [searchParams] = useSearchParams()
+ 
+  const query = searchParams.get('q') || ''
+  console.log(query)
+  
 
   const results = query
     ? movies.filter((movie) =>
@@ -12,7 +17,28 @@ export default function SearchPage() {
       )
     : [];
 
+  //     function handleSearchKeyDown(e) {
+  //   if (e.key === 'Enter' && e.target.value.trim()) {
+  //     navigate('/movies?q=' + encodeURIComponent(e.target.value.trim()));
+  //     e.target.value = '';
+  //   }
+  // }
+
+
+
+  // const { id } = useParams(); 
+  // const navigate = useNavigate();
+
+  // const movie = movies.find(p => p.id === id);
+
+  // if (!movie) {
+  //   return <div className="not-found-inline">Такого фильма нет в каталоге.</div>;
+  // }
+
+
+
   return (
+    
     <section className="page-shell">
       <span className="eyebrow">SEARCH</span>
       <h1 className="page-title">Результаты поиска</h1>

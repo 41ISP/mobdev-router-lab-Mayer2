@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
+
 export default function GenreFilter({ genres }) {
 
   return (
     <div className="genres">
       {genres.map((genre) => (
-        <a
+        <Link
           key={genre.id || 'all'}
-          href={genre.id ? `/movies?genre=${genre.id}` : '/movies'}
+          to={genre.id ? `/movies?genre=${genre.id}` : '/movies'}
           className="genre-btn"
         >
           {genre.label}
-        </a>
+        </Link>
       ))}
     </div>
   );
